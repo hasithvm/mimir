@@ -73,11 +73,11 @@ V_{out} = (1 + \frac{R_1}{R_2})\cdot V_{in} \tag*{(2) Non-inverting}\\
 \begin{multicols}{2}
 \includegraphics[scale=0.2]{opamp-integrator.eps}
 \begin{align*}
-V_{out} = \int_0^t \frac{V_{in}}{RC} \,dt + V_{initial} \tag*{Inverting Integrator}\\
+V_{out} = -\int_0^t \frac{V_{in}}{RC} \,dt + V_{initial} \tag*{Integrator / Low-pass}\\
 \end{align*}
 \includegraphics[scale=0.2]{opamp-differentiator.eps}
 \begin{align*}
-V_{out} = RC \frac{\,dV_{in}}{\,dt} \tag*{Inverting Differentiator}\\
+V_{out} = -RC \frac{\,dV_{in}}{\,dt} \tag*{Differentiator / High-pass}\\
 \end{align*}
 \end{multicols}
 \end{document}
