@@ -1,6 +1,6 @@
-\documentclass[9pt,letterpaper,english]{article}
+\documentclass[10pt,letterpaper,english]{article}
 \usepackage{mathpazo}
-\usepackage[hmargin=1cm,vmargin=1cm]{geometry}
+\usepackage[hmargin=2cm,vmargin=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{marvosym}
 \usepackage{subfigure}
@@ -80,7 +80,7 @@ V_{in}\rightarrow Op+, GND \rightarrow R_2 \rightarrow Op-, Op- \rightarrow R_1 
 \begin{multicols}{2}
 \includegraphics[scale=0.2]{opamp-integrator.eps}
 \begin{align*}
-V_{out} = -\int_0^t \frac{V_{in}}{RC} \,dt; \frac{V_{out}}{V_{in}} = \frac{-1}{j \omega RC} \tag*{Miller Integrator / Low-pass}\\
+V_{out} = -\int_0^t \frac{V_{in}}{RC} \,dt; \frac{V_{out}}{V_{in}} = \frac{-1}{j \omega RC} \tag*{Integrator / Low-pass}\\
 \end{align*}
 \includegraphics[scale=0.2]{opamp-differentiator.eps}
 \begin{align*}
@@ -109,31 +109,27 @@ A_v = \frac{-g_mr_{out}}{(1 + g_mR_S)} \tag*{Mosfet hybrid pi model}\\
 I_{current\ source}&= \frac{W_2/L_2}{W_1/L_1}\cdot I_{REF} \tag*{MOSFET current mirror circuit}
 \end{align*}
 
-
-\textsc{diodes}\\
+\textsc{diodes}
 \begin{multicols}{2}
 \begin{enumerate}
 \item{Clipper: clips one part of signal, voltage across single diode. $V_o+ \leq V_B, V_o- = V_i$ or $V_o+ \leq V_B, V_o- \geq V_i-$}
  \item{Clamper: shifts signal's DC component.}
 \end{enumerate}
-\begin{align*}
-\textsc{Shockley Diode Eqn:}\\
-I= I_S\left(e^{\frac{V_D}{\left(nV_t\right)}} - 1\right)\nonumber\\
-\textsc{Zener Diode Voltage Drop:}\\
-V_{Z} = V_{Z0} + i_Zr_Z\nonumber\\
-\end{align*}
-\end{multicols}
-
-\textsc{MOSFETs}\\
-\begin{multicols}{2}
-\begin{align*}
-g_m& = \sqrt{2\mu_n \cdot C_{ox}\frac{W}{L} \cdot I_d} = \sqrt{2I_D\cdot K}\\
-K&= \mu_n \cdot C_{ox}\frac{W}{L} \\
-\lambda&= \frac{1}{|V_A|}, r_o= \frac{|V_A|}{I_D}\\
-I_D&= K\left((V_{GS} - V_t)V_{DS} -\frac{V_{DS}}{2}\right),triode\\
-I_D&= \frac{K}{2}\left((V_{GS} - V_t)^{2}\right) sat\\
-g_m&=\left.\frac{\partial i_D}{\partial v_{GS}} \right|_{V_{GSQ}} = K\left(V_{GSQ} - V_t\right)\nonumber\\
-\end{align*}
+\begin{flalign}
+&\textsc{Shockley Diode Eqn:}\nonumber\\
+I&= I_S\left(e^{\frac{V_D}{\left(nV_t\right)}} - 1\right)\nonumber&\\
+&\textsc{Zener Diode Voltage Drop:}\nonumber\\
+V_{Z} &= V_{Z0} + i_Zr_Z\nonumber&
+\end{flalign}
+\textsc{MOSFETs}
+\begin{flalign}
+g_m& = \sqrt{2\mu_n \cdot C_{ox}\frac{W}{L} \cdot I_d} = \sqrt{2I_D\cdot K}&\nonumber\\
+K&= \mu_n \cdot C_{ox}\frac{W}{L}&\nonumber\\
+\lambda&= \frac{1}{|V_A|}, r_o= \frac{|V_A|}{I_D}&\nonumber\\
+I_D&= K\left((V_{GS} - V_t)V_{DS} -\frac{V_{DS}}{2}\right),triode&\nonumber\\
+I_D&= \frac{K}{2}\left((V_{GS} - V_t)^{2}\right) sat&\nonumber\\
+g_m&=\left.\frac{\partial i_D}{\partial v_{GS}} \right|_{V_{GSQ}} = K\left(V_{GSQ} - V_t\right)\nonumber&\nonumber
+\end{flalign}
 Modes of operation:
 \begin{enumerate}
 \item{Cutoff mode:$V_{GS} < V_t$. Transistor OFF.}
@@ -143,12 +139,8 @@ Modes of operation:
 \emph{Notes}\\
 NMOS common emitter amplifier produces signal $180^\circ$ out of phase.\\
 High input impedance ($R\rightarrow \infty$)
-\end{multicols}
-
-
-\textsc{BJTs}
-\begin{multicols}{2}
 \begin{flalign}
+\textsc{BJTs}\nonumber\\
 I_C&=I_S\cdot e^{\frac{V_{BE}}{V_T}}\nonumber&\\
 I_C&=\beta \cdot I_B, I_C = \alpha I_E\nonumber&\\
 \alpha&=\frac{\beta}{\beta + 1}\nonumber&\\
@@ -164,13 +156,11 @@ r_{in} &= r_\pi+ \left(\beta + 1\right)R_E \approx \beta R_E\nonumber&\\
  r_{out} &= R_E \big|\big| \left(\frac{r_\pi + R_{source}}{\beta + 1}\right) \approx \frac{1}{g_m} + \frac{R_{source}}{\beta}\nonumber&
 \end{flalign}
 Common Emitter Equations (BJT):
-\begin{align}
+\begin{flalign}
 A_i &= \beta&\nonumber\\
 A_v &= -\frac{\beta R_C}{r_\pi + \left(\beta + 1\right)R_E}=-\frac{g_mr_\pi R_C}{r_\pi + \left(g_mr_\pi + 1\right)R_E}&\nonumber\\
 r_{in} &= r_\pi + \left(\beta + 1\right)R_E\nonumber&\\
 r_{out} &= R_C\nonumber&
-\end{align}
+\end{flalign}
 \end{multicols}
-
-
 \end{document}
