@@ -1,6 +1,6 @@
-\documentclass[10pt,letterpaper,english]{article}
+\documentclass[9pt,letterpaper,english]{article}
 \usepackage{mathpazo}
-\usepackage[hmargin=2cm,vmargin=2cm]{geometry}
+\usepackage[hmargin=1cm,vmargin=1cm]{geometry}
 \usepackage{graphicx}
 \usepackage{marvosym}
 \usepackage{subfigure}
@@ -80,7 +80,7 @@ V_{in}\rightarrow Op+, GND \rightarrow R_2 \rightarrow Op-, Op- \rightarrow R_1 
 \begin{multicols}{2}
 \includegraphics[scale=0.2]{opamp-integrator.eps}
 \begin{align*}
-V_{out} = -\int_0^t \frac{V_{in}}{RC} \,dt; \frac{V_{out}}{V_{in}} = \frac{-1}{j \omega RC} \tag*{Integrator / Low-pass}\\
+V_{out} = -\int_0^t \frac{V_{in}}{RC} \,dt; \frac{V_{out}}{V_{in}} = \frac{-1}{j \omega RC} \tag*{Miller Integrator / Low-pass}\\
 \end{align*}
 \includegraphics[scale=0.2]{opamp-differentiator.eps}
 \begin{align*}
@@ -143,17 +143,34 @@ Modes of operation:
 \emph{Notes}\\
 NMOS common emitter amplifier produces signal $180^\circ$ out of phase.\\
 High input impedance ($R\rightarrow \infty$)
-
-
-\textsc{BJTs}\\
-\begin{multicols}{2}
-\begin{align*}
-I_C&=I_S\cdot e^{\frac{V_{BE}}{V_T}}\nonumber\\
-I_C&=\beta \cdot I_B, I_C = \alpha I_E\nonumber\\
-\alpha&=\frac{\beta}{\beta + 1}\nonumber\\
-g_m& = \frac{I_c}{V_t}\nonumber\\
-I_E&= I_C + I_B\nonumber\\
-r_\pi&= \frac{V_T}{I_B}, r_0 = \frac{|V_A|}{I_C}\nonumber\\
-\end{align*}
 \end{multicols}
+
+
+\textsc{BJTs}
+\begin{multicols}{2}
+\begin{flalign}
+I_C&=I_S\cdot e^{\frac{V_{BE}}{V_T}}\nonumber&\\
+I_C&=\beta \cdot I_B, I_C = \alpha I_E\nonumber&\\
+\alpha&=\frac{\beta}{\beta + 1}\nonumber&\\
+g_m& = \frac{I_c}{V_t}\nonumber = \frac{\beta}{r_\pi}&\\
+I_E&= I_C + I_B\nonumber&\\
+r_\pi&= \frac{V_T}{I_B}, r_0 = \frac{|V_A|}{I_C}\nonumber&
+\end{flalign}
+Common Collector Equations (BJT):
+\begin{flalign}
+A_i &= \beta + 1\nonumber&\\
+A_v &=\frac{g_mR_E}{g_mR_E+1} \approx 1\nonumber&\\
+r_{in} &= r_\pi+ \left(\beta + 1\right)R_E \approx \beta R_E\nonumber&\\
+ r_{out} &= R_E \big|\big| \left(\frac{r_\pi + R_{source}}{\beta + 1}\right) \approx \frac{1}{g_m} + \frac{R_{source}}{\beta}\nonumber&
+\end{flalign}
+Common Emitter Equations (BJT):
+\begin{align}
+A_i &= \beta&\nonumber\\
+A_v &= -\frac{\beta R_C}{r_\pi + \left(\beta + 1\right)R_E}=-\frac{g_mr_\pi R_C}{r_\pi + \left(g_mr_\pi + 1\right)R_E}&\nonumber\\
+r_{in} &= r_\pi + \left(\beta + 1\right)R_E\nonumber&\\
+r_{out} &= R_C\nonumber&
+\end{align}
+\end{multicols}
+
+
 \end{document}
