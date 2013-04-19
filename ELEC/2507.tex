@@ -68,12 +68,12 @@ V_{out} = -\left(\frac{R_F}{R_1}\cdot V_1 + \frac{R_F}{R_2}\cdot V_2 \cdots + \f
 V_n\rightarrow R_n\rightarrow Op-, OP- \rightarrow R_F \rightarrow V_{out}
 \end{align*}
 \includegraphics[scale=0.4]{opamp-2.eps}
-\begin{align*}
-V_{out} = -\frac{R_F}{R_{in}}\cdot V_{in} \tag*{(1) Inverting}\\
-V_{in}\rightarrow R_{in} \rightarrow Op-, Op- \rightarrow R_F \rightarrow V_{out}\\
-V_{out} = \left(1 + \frac{R_1}{R_2}\right)\cdot V_{in} \tag*{(2) Non-inverting}\\
-V_{in}\rightarrow Op+, GND \rightarrow R_2 \rightarrow Op-, Op- \rightarrow R_1 \rightarrow V_{out}\\
-\end{align*}
+\begin{flalign}
+V_{out} &= -\frac{R_F}{R_{in}}\cdot V_{in} \tag*{(1) Inverting}&\\
+V_{in}&\rightarrow R_{in} \rightarrow Op-, Op- \rightarrow R_F \rightarrow V_{out}&\\
+V_{out} &= \left(1 + \frac{R_1}{R_2}\right)\cdot V_{in} \tag*{(2) Non-inverting}&\\
+V_{in}&\rightarrow Op+, GND \rightarrow R_2 \rightarrow Op-, Op- \rightarrow R_1 \rightarrow V_{out}&
+\end{flalign}
 \end{multicols}
 
 
@@ -103,37 +103,32 @@ A_v = \frac{-g_mr_{out}}{(1 + g_mR_S)} \tag*{Mosfet hybrid pi model}\\
 \end{align*}
 \end{multicols}
 
-
 \includegraphics[scale=0.2]{mosfet-current-mirror.eps}
 \begin{align*}
 I_{current\ source}&= \frac{W_2/L_2}{W_1/L_1}\cdot I_{REF} \tag*{MOSFET current mirror circuit}
 \end{align*}
 
-
-\textsc{diodes}\\
+\textsc{diodes}
 \begin{multicols}{2}
 \begin{enumerate}
 \item{Clipper: clips one part of signal, voltage across single diode. $V_o+ \leq V_B, V_o- = V_i$ or $V_o+ \leq V_B, V_o- \geq V_i-$}
  \item{Clamper: shifts signal's DC component.}
 \end{enumerate}
-\begin{align*}
-\textsc{Shockley Diode Eqn:}\\
-I= I_S\left(e^{\frac{V_D}{\left(nV_t\right)}} - 1\right)\nonumber\\
-\textsc{Zener Diode Voltage Drop:}\\
-V_{Z} = V_{Z0} + i_Zr_Z\nonumber\\
-\end{align*}
-\end{multicols}
-
-\textsc{MOSFETs}\\
-\begin{multicols}{2}
-\begin{align*}
-g_m& = \sqrt{2\mu_n \cdot C_{ox}\frac{W}{L} \cdot I_d} = \sqrt{2I_D\cdot K}\\
-K&= \mu_n \cdot C_{ox}\frac{W}{L} \\
-\lambda&= \frac{1}{|V_A|}, r_o= \frac{|V_A|}{I_D}\\
-I_D&= K\left((V_{GS} - V_t)V_{DS} -\frac{V_{DS}}{2}\right),triode\\
-I_D&= \frac{K}{2}\left((V_{GS} - V_t)^{2}\right) sat\\
-g_m&=\left.\frac{\partial i_D}{\partial v_{GS}} \right|_{V_{GSQ}} = K\left(V_{GSQ} - V_t\right)\nonumber\\
-\end{align*}
+\begin{flalign}
+&\textsc{Shockley Diode Eqn:}\nonumber\\
+I&= I_S\left(e^{\frac{V_D}{\left(nV_t\right)}} - 1\right)\nonumber&\\
+&\textsc{Zener Diode Voltage Drop:}\nonumber\\
+V_{Z} &= V_{Z0} + i_Zr_Z\nonumber&
+\end{flalign}
+\textsc{MOSFETs}
+\begin{flalign}
+g_m& = \sqrt{2\mu_n \cdot C_{ox}\frac{W}{L} \cdot I_d} = \sqrt{2I_D\cdot K}&\nonumber\\
+K&= \mu_n \cdot C_{ox}\frac{W}{L}&\nonumber\\
+\lambda&= \frac{1}{|V_A|}, r_o= \frac{|V_A|}{I_D}&\nonumber\\
+I_D&= K\left((V_{GS} - V_t)V_{DS} -\frac{V_{DS}}{2}\right),triode&\nonumber\\
+I_D&= \frac{K}{2}\left((V_{GS} - V_t)^{2}\right) sat&\nonumber\\
+g_m&=\left.\frac{\partial i_D}{\partial v_{GS}} \right|_{V_{GSQ}} = K\left(V_{GSQ} - V_t\right)\nonumber&\nonumber
+\end{flalign}
 Modes of operation:
 \begin{enumerate}
 \item{Cutoff mode:$V_{GS} < V_t$. Transistor OFF.}
@@ -143,17 +138,42 @@ Modes of operation:
 \emph{Notes}\\
 NMOS common emitter amplifier produces signal $180^\circ$ out of phase.\\
 High input impedance ($R\rightarrow \infty$)
-
-
-\textsc{BJTs}\\
-\begin{multicols}{2}
-\begin{align*}
-I_C&=I_S\cdot e^{\frac{V_{BE}}{V_T}}\nonumber\\
-I_C&=\beta \cdot I_B, I_C = \alpha I_E\nonumber\\
-\alpha&=\frac{\beta}{\beta + 1}\nonumber\\
-g_m& = \frac{I_c}{V_t}\nonumber\\
-I_E&= I_C + I_B\nonumber\\
-r_\pi&= \frac{V_T}{I_B}, r_0 = \frac{|V_A|}{I_C}\nonumber\\
-\end{align*}
+\begin{flalign}
+\textsc{BJTs}\nonumber\\
+I_C&=I_S\cdot e^{\frac{V_{BE}}{V_T}}\nonumber&\\
+I_C&=\beta \cdot I_B, I_C = \alpha I_E\nonumber&\\
+\alpha&=\frac{\beta}{\beta + 1}\nonumber&\\
+g_m& = \frac{I_c}{V_t}\nonumber = \frac{\beta}{r_\pi}&\\
+I_E&= I_C + I_B\nonumber&\\
+r_\pi&= \frac{V_T}{I_B}, r_0 = \frac{|V_A|}{I_C}\nonumber&
+\end{flalign}
+Common Collector Equations (BJT):
+\begin{flalign}
+A_i &= \beta + 1\nonumber&\\
+A_v &=\frac{g_mR_E}{g_mR_E+1} \approx 1\nonumber&\\
+r_{in} &= r_\pi+ \left(\beta + 1\right)R_E \approx \beta R_E\nonumber&\\
+ r_{out} &= R_E \big|\big| \left(\frac{r_\pi + R_{source}}{\beta + 1}\right) \approx \frac{1}{g_m} + \frac{R_{source}}{\beta}\nonumber&
+\end{flalign}
+Common Emitter Equations (BJT):
+\begin{flalign}
+A_i &= \beta&\nonumber\\
+A_v &= -\frac{\beta R_C}{r_\pi + \left(\beta + 1\right)R_E}=-\frac{g_mr_\pi R_C}{r_\pi + \left(g_mr_\pi + 1\right)R_E}&\nonumber\\
+r_{in} &= r_\pi + \left(\beta + 1\right)R_E\nonumber&\\
+r_{out} &= R_C\nonumber&
+\end{flalign}
+Common Source Equations:
+\begin{flalign}
+A_i &= \infty&\nonumber\\
+A_v &= -\frac{g_mR_D}{1+g_mR_S}&\nonumber\\
+r_{in} &= \infty&\nonumber\\
+r_{out} &= R_D&\nonumber
+\end{flalign}
+Common Drain Equations:
+\begin{flalign}
+A_i &= \infty&\nonumber\\
+A_v &= \frac{g_mR_S}{g_mR_S+1}\approx 1&\nonumber\\
+r_{in} &= \infty&\nonumber\\
+r_{out} &= \frac{R_S}{g_mR_S+1}\approx\frac{1}{g_m}&\nonumber
+\end{flalign}
 \end{multicols}
 \end{document}
