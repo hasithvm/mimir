@@ -64,12 +64,12 @@ There's a PDF in the comment, read it and grab the relevant parts.
 \begin{multicols}{2}
 \includegraphics[scale=0.2]{opamp-1.eps}
 \begin{align*}
-V_{out} = -(\frac{R_F}{R_1}\cdot V_1 + \frac{R_F}{R_2}\cdot V_2 \cdots + \frac{R_F}{R_n}\cdot V_n)
+V_{out} = -\left(\frac{R_F}{R_1}\cdot V_1 + \frac{R_F}{R_2}\cdot V_2 \cdots + \frac{R_F}{R_n}\cdot V_n\right)
 \end{align*}
 \includegraphics[scale=0.4]{opamp-2.eps}
 \begin{align*}
 V_{out} = -\frac{R_F}{R_{in}}\cdot V_{in} \tag*{(1) Inverting}\\
-V_{out} = (1 + \frac{R_1}{R_2})\cdot V_{in} \tag*{(2) Non-inverting}\\
+V_{out} = \left(1 + \frac{R_1}{R_2}\right)\cdot V_{in} \tag*{(2) Non-inverting}\\
 \end{align*}
 \end{multicols}
 
@@ -117,12 +117,21 @@ High input impedance ($R\rightarrow \infty$)
 
 \textsc{BJTs}\\
 \begin{multicols}{2}
-\begin{align}
-I_C&=I_S\cdot e^{\frac{V_{BE}}{V_T}}\\
-I_C&= \beta \cdot I_B, I_C = \alpha I_E\\
-g_m& = \frac{I_c}{V_t}\\
-I_E&= I_C + I_B\\
-r_\pi&= \frac{V_T}{I_B}, r_0 = \frac{|V_A|}{I_C}
-\end{align}
+\begin{align*}
+I_C&=I_S\cdot e^{\frac{V_{BE}}{V_T}}\nonumber\\
+I_C&=\beta \cdot I_B, I_C = \alpha I_E\nonumber\\
+\alpha&=\frac{\beta}{\beta + 1}\nonumber\\
+g_m& = \frac{I_c}{V_t}\nonumber\\
+I_E&= I_C + I_B\nonumber\\
+r_\pi&= \frac{V_T}{I_B}, r_0 = \frac{|V_A|}{I_C}\nonumber
+\end{align*}
+\begin{align*}
+\textsc{Shockley Diode Eqn:}\\
+I= I_S\left(e^{\frac{V_D}{\left(nV_t\right)}} - 1\right)\nonumber\\
+\textsc{Zener Diode Voltage Drop:}\\
+V_{Z} = V_{Z0} + i_Zr_Z\nonumber\\
+\textsc{Mosfet Equations}\\
+g_m=\left.\frac{\partial i_D}{\partial v_{GS}} \right|_{V_{GSQ}} = K\left(V_{GSQ} - V_t\right)\nonumber\\
+\end{align*}
 \end{multicols}
 \end{document}
