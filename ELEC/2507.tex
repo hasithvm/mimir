@@ -77,7 +77,7 @@ V_{out} = (1 + \frac{R_1}{R_2})\cdot V_{in} \tag*{(2) Non-inverting}\\
 \begin{multicols}{2}
 \includegraphics[scale=0.2]{opamp-integrator.eps}
 \begin{align*}
-V_{out} = -\int_0^t \frac{V_{in}}{RC} \,dt + V_{initial} \tag*{Integrator / Low-pass}\\
+V_{out} = -\int_0^t \frac{V_{in}}{RC} \,dt; \frac{V_{out}}{V_{in}} = \frac{-1}{j \omega RC} \tag*{Integrator / Low-pass}\\
 \end{align*}
 \includegraphics[scale=0.2]{opamp-differentiator.eps}
 \begin{align*}
@@ -86,18 +86,17 @@ V_{out} = -RC \frac{\,dV_{in}}{\,dt} \tag*{Differentiator / High-pass}\\
 \end{multicols}
 
 
-\textsc{mossfets}\\
+\textsc{mosfets}\\
 
 \begin{multicols}{2}
 \includegraphics[scale=0.24]{mosfet-t-model.eps}
-\vspace{4mm}
 \begin{align*}
 \tag*{Mosfet T-model}\\
 \end{align*}
 \includegraphics[scale=0.4]{mosfet-hybrid-pi.eps}
-\vspace{4mm}
+\vspace{2mm}
 \begin{align*}
-\tag*{Mosfet hybrid pi model}\\
+A_v = \frac{-g_mr_{out}}{(1 + g_mR_S)} \tag*{Mosfet hybrid pi model}\\
 \end{align*}
 \end{multicols}
 
